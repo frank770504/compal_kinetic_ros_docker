@@ -6,6 +6,8 @@ FROM osrf/ros:kinetic-desktop-xenial
 RUN apt-get update && apt-get install -y \
     ros-kinetic-desktop-full=1.3.1-0*
 
+RUN apt-get update --fix-missing
+
 RUN apt-get install \
     ros-kinetic-serial -y \
     ros-kinetic-bfl -y \
@@ -24,7 +26,8 @@ RUN apt-get install \
     ros-kinetic-rosapi -y \
     ros-kinetic-rosauth -y \
     ros-kinetic-rosbridge-library -y \
-    python-wstool -y
+    python-wstool -y \
+    python-pandas -y
 RUN apt-get install vim -y
 RUN ln -s /usr/include/gazebo-7/gazebo/ /usr/include/gazebo
 RUN ln -s /usr/include/sdformat-4.0/sdf/ /usr/include/sdf
