@@ -3,7 +3,7 @@
 FROM osrf/ros:kinetic-desktop-xenial
 
 # install ros packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get update --fix-missing && apt-get install -y \
     ros-kinetic-desktop-full=1.3.2-0*
 
 RUN apt-get update --fix-missing
@@ -28,6 +28,7 @@ RUN apt-get install \
     ros-kinetic-rosbridge-library -y \
     python-wstool -y \
     python-pandas -y \
+    python-bloom -y \
     wget
 RUN apt-get install vim -y
 RUN ln -s /usr/include/gazebo-7/gazebo/ /usr/include/gazebo
@@ -35,8 +36,11 @@ RUN ln -s /usr/include/sdformat-4.0/sdf/ /usr/include/sdf
 RUN ln -s /usr/include/ignition/math2/ignition/math.hh /usr/include/ignition/math.hh
 RUN ln -s /usr/include/ignition/math2/ignition/math /usr/include/ignition/math
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install nodejs iputils-ping -y
+
+#RUN npm install npm@5.5.1 -g
+RUN npm install forever -g
 
 RUN  apt-get autoclean \
     && apt-get autoremove \
