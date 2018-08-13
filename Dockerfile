@@ -6,30 +6,34 @@ FROM osrf/ros:kinetic-desktop-xenial
 RUN apt-get update --fix-missing && apt-get install -y \
     ros-kinetic-desktop-full=1.3.2-0*
 
-RUN apt-get update --fix-missing
-
-RUN apt-get install \
-    ros-kinetic-serial -y \
-    ros-kinetic-bfl -y \
-    ros-kinetic-urg-c -y \
-    ros-kinetic-laser-proc -y \
-    ros-kinetic-move-base-msgs -y \
-    ros-kinetic-ecl -y \
-    libsdl-image1.2-dev -y \
+RUN apt-get update && apt-get install -y \
+    ros-kinetic-serial \
+    ros-kinetic-bfl \
+    ros-kinetic-urg-c \
+    ros-kinetic-laser-proc \
+    ros-kinetic-move-base-msgs \
+    ros-kinetic-ecl \
+    libsdl-image1.2-dev \
     ros-kinetic-ros-control ros-kinetic-ros-controllers \
     ros-kinetic-gazebo-ros-control ros-kinetic-laser-proc \
-    ros-kinetic-hector-gazebo-plugins -y \
-    ros-kinetic-navigation-layers -y \
-    ros-kinetic-hector-models -y \
-    ros-kinetic-robot-pose-publisher -y \
-    ros-kinetic-tf2-web-republisher -y \
-    ros-kinetic-rosapi -y \
-    ros-kinetic-rosauth -y \
-    ros-kinetic-rosbridge-library -y \
-    python-wstool -y \
-    python-pandas -y \
-    python-bloom -y \
-    wget
+    ros-kinetic-hector-gazebo-plugins \
+    ros-kinetic-navigation-layers \
+    ros-kinetic-hector-models \
+    ros-kinetic-robot-pose-publisher \
+    ros-kinetic-tf2-web-republisher \
+    ros-kinetic-rosapi \
+    ros-kinetic-rosauth \
+    ros-kinetic-rosbridge-library \
+    python-wstool \
+    python-pandas \
+    python-bloom \
+    wget -y
+
+RUN apt-get update && apt-get install ros-kinetic-grid-map -y
+RUN apt-get update && apt-get install ros-kinetic-joy -y
+RUN apt-get update && apt-get install python-rosdep ninja-build -y
+RUN apt-get update && apt-get install doxygen -y
+
 RUN apt-get install vim -y
 RUN ln -s /usr/include/gazebo-7/gazebo/ /usr/include/gazebo
 RUN ln -s /usr/include/sdformat-4.0/sdf/ /usr/include/sdf
