@@ -2,6 +2,8 @@
 # generated from docker_images/create_ros_image.Dockerfile.em
 FROM osrf/ros:kinetic-desktop-xenial
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 # install ros packages
 RUN apt-get update --fix-missing && apt-get install -y \
     ros-kinetic-desktop-full=1.3.2-0*
@@ -28,11 +30,19 @@ RUN apt-get update && apt-get install -y \
     python-pandas \
     python-bloom \
     wget -y
-
+RUN apt-get update && apt-get install apt-utils -y
 RUN apt-get update && apt-get install ros-kinetic-grid-map -y
 RUN apt-get update && apt-get install ros-kinetic-joy -y
 RUN apt-get update && apt-get install python-rosdep ninja-build -y
 RUN apt-get update && apt-get install doxygen -y
+RUN apt-get update && apt-get install python-igraph -y
+RUN apt-get update && apt-get install python-sphinx -y
+RUN apt-get update && apt-get install protobuf-compiler -y
+RUN apt-get update && apt-get install libgflags-dev -y
+RUN apt-get update && apt-get install libatlas-base-dev -y
+RUN apt-get update && apt-get install libsuitesparse-dev -y
+RUN apt-get update && apt-get install libgoogle-glog-dev -y
+RUN apt-get update && apt-get install liblua5.2-dev -y
 
 RUN apt-get install vim -y
 RUN ln -s /usr/include/gazebo-7/gazebo/ /usr/include/gazebo
