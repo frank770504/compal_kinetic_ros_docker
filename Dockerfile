@@ -43,6 +43,7 @@ RUN apt-get update && apt-get install libatlas-base-dev -y
 RUN apt-get update && apt-get install libsuitesparse-dev -y
 RUN apt-get update && apt-get install libgoogle-glog-dev -y
 RUN apt-get update && apt-get install liblua5.2-dev -y
+RUN apt-get update && apt-get install ssh -y
 
 RUN apt-get install vim -y
 RUN ln -s /usr/include/gazebo-7/gazebo/ /usr/include/gazebo
