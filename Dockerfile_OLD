@@ -3,6 +3,8 @@
 FROM frank770504/ros:compal-kinetic-nvidia-new-carto
 
 RUN apt-get update && apt-get install python-pygame -y
+RUN apt-get update && apt-get install python-pip -y
+RUN pip install scikit-learn==0.20
 
 RUN  apt-get autoclean \
     && apt-get autoremove \
